@@ -1,5 +1,6 @@
 public class Tag {
     private int codiceUnivoco;
+    private static int incrementoCodice = 0;
     private String descrizione;
     private Posizione posizioneTag;
 
@@ -14,6 +15,10 @@ public class Tag {
         xyz[1] = posizioneOttenuta.getY();
         xyz[2] = posizioneOttenuta.getZ();
         return xyz;
+    }
+
+    public String toString(){
+        return "Tag[ codiceUnivoco: " + codiceUnivoco + ", descrizione: " + descrizione + "]"; 
     }
 
     public int getCodiceUnivoco() {
@@ -36,14 +41,14 @@ public class Tag {
         posizioneTag = nuovaPosizione;
     }
 
-    public Tag(int codiceUnivoco, String descrizione, Posizione posizioneTag){
-        this.codiceUnivoco = codiceUnivoco;
+    public Tag(String descrizione, Posizione posizioneTag){
+        this.codiceUnivoco = incrementoCodice++;
         this.descrizione = descrizione;
         this.posizioneTag = posizioneTag;
     }
 
-    public Tag(int codiceUnivoco, Posizione posizioneTag){
-        this.codiceUnivoco = codiceUnivoco;
+    public Tag(Posizione posizioneTag){
+        this.codiceUnivoco = incrementoCodice++;
         this.posizioneTag = posizioneTag;
     }
 }
