@@ -1,6 +1,7 @@
 public class Core {
     private Tag[] tagRilevati;
     private Posizione posizioneCore;
+    private int incrementoTagRilevati = 0;
 
     public void aggiungiAggiorna(Tag nuovoTag){
         int i = 0;
@@ -39,6 +40,12 @@ public class Core {
             }
         }
         return elencoTag;
+    }
+
+    public String toString(){
+        String[] tagToStrings = new String[incrementoTagRilevati];
+        for(int i )
+        return "Core[" + tagRilevati + "]";
     }
 
     public Posizione getPosizioneCore(){
