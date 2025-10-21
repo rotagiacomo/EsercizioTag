@@ -1,51 +1,58 @@
 public class Core {
     private Tag[] tagRilevati;
     private Posizione posizioneCore;
-    private int incrementoTagRilevati = 0;
+    private static int incrementoTagRilevati = 0;
 
     public void aggiungiAggiorna(Tag nuovoTag){
-        int i = 0;
-        for (; i<tagRilevati.length && tagRilevati[i] != null; i++){
+        for (int i = 0; i<incrementoTagRilevati; i++){
             if (tagRilevati[i].getCodiceUnivoco() == nuovoTag.getCodiceUnivoco()){
-                tagRilevati[i] = nuovoTag;
+                aggiornaTag(nuovoTag, i);
                 return;
             }
         }
-        tagRilevati[i] = nuovoTag;
+        aggiungiTag(nuovoTag);
+    }
+
+    private void aggiungiTag(Tag nuovoTag){
+        tagRilevati[incrementoTagRilevati] = nuovoTag;
+        incrementoTagRilevati++;
+    }
+
+    private void aggiornaTag(Tag tagDaAggiornare, int indiceTag){
+        tagRilevati[indiceTag] = tagDaAggiornare;
     }
 
     public void elimina(Tag tagDaEliminare){
-        for (int i = 0; i<tagRilevati.length && tagRilevati[i] != null; i++){
+        for (int i = 0; i<incrementoTagRilevati; i++){
             if (tagRilevati[i].getCodiceUnivoco() == tagDaEliminare.getCodiceUnivoco()){
-                for (int j = i; j<tagRilevati.length && tagRilevati[j] != null; j++){
-                    tagRilevati[j] = tagRilevati[j+1];
-                }
+                tagRilevati[i] = tagRilevati[incrementoTagRilevati-1];
+                incrementoTagRilevati--;
             }
         }
     }
 
-    public String[] elencaTagRilevati(){
-        String[] elencoTag = new String[tagRilevati.length];
-        for (int i = 0; i<tagRilevati.length && tagRilevati[i] != null; i++){
-            elencoTag[i] = tagRilevati[i].getCodiceUnivoco() + ": " + tagRilevati[i].getDescrizione();
-        }
-        return elencoTag;
+    public Tag[] elencaTagRilevati(){
+        return tagRilevati;
     }
 
-    public String[] elencaTagInferioriDistanza(float distanzaMassima){
-        String[] elencoTag = new String[tagRilevati.length];
-        for (int i = 0; i<tagRilevati.length && tagRilevati[i] != null; i++){
+    public Tag[] elencaTagInferioriDistanza(float distanzaMassima){
+        Tag[] elencoTag = new Tag[incrementoTagRilevati];
+        for (int i = 0; i<incrementoTagRilevati; i++){
             if (tagRilevati[i].getPosizioneTag().distanzaDa(posizioneCore) < distanzaMassima){
-                elencoTag[i] = tagRilevati[i].getCodiceUnivoco() + ": " + tagRilevati[i].getDescrizione();
+                elencoTag[i] = tagRilevati[i];
             }
         }
         return elencoTag;
     }
 
     public String toString(){
-        String[] tagToStrings = new String[incrementoTagRilevati];
-        for(int i )
-        return "Core[" + tagRilevati + "]";
+        String coreString = "Core[";
+        for(int i = 0; i<incrementoTagRilevati; i++){
+            coreString += tagRilevati[i]; 
+            if (i < incrementoTagRilevati - 1) coreString += ", ";
+        }
+        coreString += "]";
+        return coreString;
     }
 
     public Posizione getPosizioneCore(){
