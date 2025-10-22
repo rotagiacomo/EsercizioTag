@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args){
-        Core core = new Core(5, new Posizione());
+        Core core = new Core(10, new Posizione());
         Tag primoTag = new Tag("Chiavi", new Posizione(1,1,1));
         Tag secondoTag = new Tag(new Posizione());
         Tag terzoTag = new Tag("Auto", new Posizione(1,5,2));
