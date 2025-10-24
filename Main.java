@@ -6,19 +6,25 @@ public class Main {
         Tag terzoTag = new Tag("Auto", new Posizione(1,5,2));
         Tag quartoTag = new Tag("Portafoglio", new Posizione(2,2,2));
         Tag quintoTag = new Tag("Casa", new Posizione(3,2,1));
+        Tag[] arrayTags = new Tag[5];
+        arrayTags[0] = terzoTag;
+        arrayTags[1] = quartoTag;
 
         core.aggiungiAggiorna(primoTag);
         core.aggiungiAggiorna(secondoTag);
-        core.aggiungiAggiorna(terzoTag);
-        core.aggiungiAggiorna(quartoTag);
-        core.aggiungiAggiorna(quintoTag);
+        System.out.println(core);
+
+        core.aggiungiAggiorna(arrayTags);
+        System.out.println(core);
+
+        arrayTags[1] = quintoTag;
+        core.aggiungiAggiorna(arrayTags);
         System.out.println(core);
 
         core.elimina(terzoTag);
         System.out.println(core);
 
-        System.out.println(terzoTag.distanzaDaCore(core));
-        secondoTag.setDescrizione("Telefono");
+        core.aggiungiAggiorna(arrayTags);
         System.out.println(core);
     }
 }

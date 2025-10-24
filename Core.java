@@ -11,6 +11,22 @@ public class Core {
             aggiornaTag(nuovoTag, indiceTag);
     }
 
+    public void aggiungiAggiorna(Tag[] nuoviTag){
+        for (int i = 0; i<dimensioneArrayTag; i++){
+            for (int j = 0; j<nuoviTag.length && nuoviTag[j] != null; j++){
+                if (tagRilevati[i].getCodiceUnivoco() == nuoviTag[j].getCodiceUnivoco()){
+                    aggiornaTag(nuoviTag[j], i);
+                    nuoviTag[j] = null;
+                }
+            }
+        }
+        for (int i = 0; i<nuoviTag.length; i++){
+            if (nuoviTag[i] != null){
+                aggiungiTag(nuoviTag[i]);
+            }
+        }
+    }
+
     private void aggiungiTag(Tag nuovoTag){
         tagRilevati[dimensioneArrayTag] = nuovoTag;
         dimensioneArrayTag++;
