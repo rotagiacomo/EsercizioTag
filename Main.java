@@ -31,7 +31,10 @@ public class Main {
         arrayTags[1] = quartoTag;
         core.aggiungiAggiorna(arrayTags);
         System.out.println(core);
-        //System.out.println(Tag.arrayToString(core.elencaTagInferioriDistanza(4)));
+
+        System.out.println();
+        System.out.println("Verifico il metodo dei tag inferiori a distanza");
+        System.out.println(Tag.arrayToString(core.elencaTagInferioriDistanza(2)));
 
         core.elimina(terzoTag);
     }
