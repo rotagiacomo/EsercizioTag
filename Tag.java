@@ -21,6 +21,18 @@ public class Tag {
         return "Tag[ codiceUnivoco: " + codiceUnivoco + ", descrizione: " + descrizione + "]"; 
     }
 
+    public static String arrayToString(Tag[] arrayTag){ //metodo di utilità
+        String arrayTagString = "[";
+        for (int i = 0; i<arrayTag.length && arrayTag[i] != null; i++){
+            arrayTagString += arrayTag[i];
+            if(i < arrayTag.length -1 && arrayTag[i+1] != null){
+                arrayTagString += ", ";
+            }
+        }
+        arrayTagString += "]";
+        return arrayTagString;
+    }
+
     public int getCodiceUnivoco() {
         return codiceUnivoco;
     }

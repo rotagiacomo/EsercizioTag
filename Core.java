@@ -55,15 +55,17 @@ public class Core {
         }
     }
 
-    public Tag[] elencaTagRilevati(){
+    public Tag[] getTagRilevati(){
         return tagRilevati;
     }
 
     public Tag[] elencaTagInferioriDistanza(float distanzaMassima){
         Tag[] elencoTag = new Tag[dimensioneArrayTag];
+        int p = 0;
         for (int i = 0; i<dimensioneArrayTag; i++){
             if (tagRilevati[i].getPosizioneTag().distanzaDa(posizioneCore) < distanzaMassima){
-                elencoTag[i] = tagRilevati[i];
+                elencoTag[p] = tagRilevati[i];
+                p++;
             }
         }
         return elencoTag;

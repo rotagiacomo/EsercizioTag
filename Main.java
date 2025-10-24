@@ -5,26 +5,34 @@ public class Main {
         Tag secondoTag = new Tag(new Posizione());
         Tag terzoTag = new Tag("Auto", new Posizione(1,5,2));
         Tag quartoTag = new Tag("Portafoglio", new Posizione(2,2,2));
-        Tag quintoTag = new Tag("Casa", new Posizione(3,2,1));
-        Tag[] arrayTags = new Tag[5];
-        arrayTags[0] = terzoTag;
-        arrayTags[1] = quartoTag;
+        Tag quintoTag = new Tag("Orologio", new Posizione(1,1,2));
 
+        System.out.println("Aggiungo 2 tag con il metodo aggiungiAggiorna");
         core.aggiungiAggiorna(primoTag);
         core.aggiungiAggiorna(secondoTag);
         System.out.println(core);
 
+        System.out.println();
+        System.out.println("Aggiungo un array di 2 Tag");
+        Tag[] arrayTags = new Tag[5];
+        arrayTags[0] = terzoTag;
+        arrayTags[1] = quartoTag;
         core.aggiungiAggiorna(arrayTags);
         System.out.println(core);
 
-        arrayTags[1] = quintoTag;
-        core.aggiungiAggiorna(arrayTags);
-        System.out.println(core);
-
+        System.out.println();
+        System.out.println("Rimuovo il tag");
         core.elimina(terzoTag);
         System.out.println(core);
 
+        System.out.println();
+        System.out.println("Aggiungo un array di 2 Tag di cui uno deve essere aggiornato");
+        arrayTags[0] = quintoTag;
+        arrayTags[1] = quartoTag;
         core.aggiungiAggiorna(arrayTags);
         System.out.println(core);
+        //System.out.println(Tag.arrayToString(core.elencaTagInferioriDistanza(4)));
+
+        core.elimina(terzoTag);
     }
 }
